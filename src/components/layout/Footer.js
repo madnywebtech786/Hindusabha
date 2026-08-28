@@ -58,6 +58,9 @@ export default function Footer() {
             <Link href="/in-the-news" className="text-ink-muted transition-colors hover:text-secondary">
               In the News
             </Link>
+            <Link href="/donate" className="text-ink-muted transition-colors hover:text-secondary">
+              Donate
+            </Link>
             <Link href="/contact" className="text-ink-muted transition-colors hover:text-secondary">
               Contact
             </Link>

@@ -49,13 +49,13 @@ function buildPhotoList({ folder, prefix, count, altPrefix }) {
 export const GALLERY = buildPhotoList({
   folder: "gallery",
   prefix: "gallery",
-  count: 36,
+  count: 28,
   altPrefix: "Sant Mahasabha Society of Alberta — community moment",
 });
 
 export const IN_NEWS = buildPhotoList({
   folder: "in-news",
   prefix: "news",
-  count: 19,
+  count: 27,
   altPrefix: "Sant Mahasabha Society of Alberta in the news — clipping",
 });

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, HandHeart } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -56,31 +56,38 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative font-body text-[15px] font-medium text-ink transition-colors hover:text-secondary after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[linear-gradient(135deg,#ED6528,#C1262C)] after:transition-all after:duration-300 hover:after:w-full"
+              className="relative whitespace-nowrap font-body text-[15px] font-medium text-ink transition-colors hover:text-secondary after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[linear-gradient(135deg,#ED6528,#C1262C)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="tel:+14036812889"
-            className="flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,#ED6528_0%,#C1262C_100%)] px-5 py-2.5 font-body text-sm font-semibold text-white shadow-[0_6px_18px_-6px_rgba(193,38,44,0.55)] transition-transform hover:-translate-y-0.5"
+            className="flex items-center gap-2 whitespace-nowrap rounded-full border border-primary/30 px-5 py-2.5 font-body text-sm font-semibold text-secondary transition-colors hover:border-primary hover:bg-cream"
           >
             <Phone className="h-3.5 w-3.5" strokeWidth={2.5} />
             403-681-2889
           </a>
+          <Link
+            href="/donate"
+            className="flex items-center gap-2 whitespace-nowrap rounded-full bg-[linear-gradient(135deg,#ED6528_0%,#C1262C_100%)] px-5 py-2.5 font-body text-sm font-semibold text-white shadow-[0_6px_18px_-6px_rgba(193,38,44,0.55)] transition-transform hover:-translate-y-0.5"
+          >
+            <HandHeart className="h-3.5 w-3.5" strokeWidth={2.5} />
+            Donate Now
+          </Link>
         </div>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-ink lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
@@ -90,7 +97,7 @@ export default function Header() {
       </div>
 
       {open ? (
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <nav className="flex flex-col gap-1 border-t border-primary/15 bg-white px-5 pb-6 pt-4">
             {NAV_LINKS.map((link) => (
               <Link
@@ -102,13 +109,23 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="tel:+14036812889"
-              className="mt-3 flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#ED6528_0%,#C1262C_100%)] px-5 py-3 font-body text-sm font-semibold text-white"
-            >
-              <Phone className="h-3.5 w-3.5" strokeWidth={2.5} />
-              403-681-2889
-            </a>
+            <div className="mt-3 flex flex-col gap-2.5">
+              <Link
+                href="/donate"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center gap-2 rounded-full bg-[linear-gradient(135deg,#ED6528_0%,#C1262C_100%)] px-5 py-3 font-body text-sm font-semibold text-white"
+              >
+                <HandHeart className="h-3.5 w-3.5" strokeWidth={2.5} />
+                Donate Now
+              </Link>
+              <a
+                href="tel:+14036812889"
+                className="flex items-center justify-center gap-2 rounded-full border border-primary/30 px-5 py-3 font-body text-sm font-semibold text-secondary"
+              >
+                <Phone className="h-3.5 w-3.5" strokeWidth={2.5} />
+                403-681-2889
+              </a>
+            </div>
           </nav>
         </div>
       ) : null}
