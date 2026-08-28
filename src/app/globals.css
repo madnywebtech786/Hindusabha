@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #ed6528;
+  --color-primary-dark: #c94f1c;
+  --color-secondary: #c1262c;
+  --color-secondary-dark: #96181d;
+  --color-gold: #c89b4a;
+  --color-ink: #2a1810;
+  --color-ink-muted: #6b5548;
+  --color-cream: #fff9f2;
+  --color-cream-deep: #fbead9;
+  --color-white: #ffffff;
+
+  --gradient-primary: linear-gradient(135deg, #ed6528 0%, #c1262c 100%);
+  --gradient-primary-soft: linear-gradient(135deg, #f3854f 0%, #d1454a 100%);
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-body: var(--font-karla), "Karla", sans-serif;
+  --font-devanagari: var(--font-tiro), "Tiro Devanagari Hindi", serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-dark: var(--color-secondary-dark);
+  --color-gold: var(--color-gold);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-devanagari: var(--font-devanagari);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Gradient text fill, used sparingly for emphasis words */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/*
+ * Warm archival duotone for portrait photography. Source photos vary in
+ * lighting and background (studio wall, plain backdrop, phone snapshot);
+ * this maps every portrait into the site's cream/ink/saffron range so
+ * they read as one photographed archive rather than mismatched submissions.
+ * Grayscale first so the sepia/hue-rotate lands a consistent cast
+ * regardless of the source image's original color temperature.
+ */
+.duotone-portrait {
+  filter: grayscale(1) sepia(0.35) saturate(2.2) brightness(0.96)
+    hue-rotate(-6deg) contrast(1.05);
+}
+
+/* Focus ring, consistent across interactive elements */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
