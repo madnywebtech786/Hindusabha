@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { CONTACT_EMAIL } from "@/lib/content";
 
 export default function Footer() {
   return (
@@ -34,6 +35,13 @@ export default function Footer() {
           >
             <Phone className="h-4 w-4 shrink-0 text-primary" />
             403-681-2889
+          </a>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="flex items-center gap-2.5 font-body text-sm text-ink-muted transition-colors hover:text-secondary"
+          >
+            <Mail className="h-4 w-4 shrink-0 text-primary" />
+            {CONTACT_EMAIL}
           </a>
         </div>
 

@@ -1,11 +1,11 @@
-import { HandHeart, MapPin, Phone } from "lucide-react";
+import { HandHeart, MapPin, Phone, Mail } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import CornerOrnament from "@/components/motifs/CornerOrnament";
 import MandalaBackdrop from "@/components/motifs/MandalaBackdrop";
 import OmMark from "@/components/motifs/OmMark";
-import { OFFICES } from "@/lib/content";
+import { OFFICES, CONTACT_EMAIL } from "@/lib/content";
 
 export default function ContactDonate() {
   return (
@@ -52,6 +52,13 @@ export default function ContactDonate() {
                   ) : null}
                 </div>
               ))}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="flex items-center gap-2.5 border-t border-primary/10 pt-4 font-body text-sm text-ink-muted transition-colors hover:text-primary"
+              >
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                {CONTACT_EMAIL}
+              </a>
               <Button href="/contact" variant="outline" className="mt-2 w-fit">
                 Full Contact Details
               </Button>

@@ -1,9 +1,9 @@
-import { HandHeart, Phone, Sparkles } from "lucide-react";
+import { HandHeart, Phone, Mail, Sparkles } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import CornerOrnament from "@/components/motifs/CornerOrnament";
 import OmMark from "@/components/motifs/OmMark";
-import { OFFICES } from "@/lib/content";
+import { OFFICES, CONTACT_EMAIL } from "@/lib/content";
 
 const CANADA_OFFICE = OFFICES.find((office) => office.phone);
 
@@ -44,15 +44,24 @@ export default function DonatePlaceholder() {
               will gladly help you make a contribution today.
             </p>
 
-            {CANADA_OFFICE ? (
+            <div className="relative mt-8 flex flex-wrap items-center justify-center gap-4">
+              {CANADA_OFFICE ? (
+                <a
+                  href={`tel:${CANADA_OFFICE.phone.replace(/[^+\d]/g, "")}`}
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-body text-sm font-semibold text-secondary shadow-[0_10px_24px_-10px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call {CANADA_OFFICE.phone}
+                </a>
+              ) : null}
               <a
-                href={`tel:${CANADA_OFFICE.phone.replace(/[^+\d]/g, "")}`}
-                className="relative mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-body text-sm font-semibold text-secondary shadow-[0_10px_24px_-10px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5"
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 font-body text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
-                <Phone className="h-4 w-4" />
-                Call {CANADA_OFFICE.phone}
+                <Mail className="h-4 w-4" />
+                {CONTACT_EMAIL}
               </a>
-            ) : null}
+            </div>
           </div>
         </Reveal>
 

@@ -1,10 +1,10 @@
-import { MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
 import OmMark from "@/components/motifs/OmMark";
 import CornerOrnament from "@/components/motifs/CornerOrnament";
 import KalashMark from "@/components/motifs/KalashMark";
-import { OFFICES } from "@/lib/content";
+import { OFFICES, CONTACT_EMAIL } from "@/lib/content";
 
 const CANADA = OFFICES.find((o) => o.label === "Canada Office");
 const INTERNATIONAL = OFFICES.find((o) => o.label === "International Office");
@@ -54,12 +54,27 @@ export default function ContactOffices() {
                   {CANADA.phone}
                 </a>
               </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 shrink-0 text-primary" />
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="font-body text-base text-white/80 transition-colors hover:text-primary"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+              </div>
             </div>
 
             <div className="mt-9 flex flex-wrap gap-4">
               <Button href={`tel:${CANADA.phone.replace(/[^+\d]/g, "")}`}>
                 Call the Office
               </Button>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 font-body text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:border-white/50"
+              >
+                Email Us
+              </a>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CANADA.address)}`}
                 target="_blank"

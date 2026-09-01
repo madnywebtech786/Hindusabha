@@ -27,6 +27,8 @@ export const LEADERS = [
   },
 ];
 
+export const CONTACT_EMAIL = "smsoa@gmail.com";
+
 export const OFFICES = [
   {
     label: "Canada Office",
